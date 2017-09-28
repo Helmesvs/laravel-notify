@@ -19,13 +19,13 @@ class NotifyServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		$this->publishes([
-			__DIR__ . '/../../config/config.php' => config_path('notify.php'),
-			__DIR__ . '/../../assets/fonts/themify.woff@-fvbane' => public_path('vendor/Notify/fonts/themify.woff@-fvbane'),
-			__DIR__ . '/../../assets/jquery/jquery-3.2.1.min.js' => public_path('vendor/Notify/jquery/jquery-3.2.1.min.js'),
-			__DIR__ . '/../../assets/toastr/toastr.min.css' => public_path('vendor/Notify/toastr/toastr.min.css'),
-			__DIR__ . '/../../assets/toastr/toastr.min.js' => public_path('vendor/Notify/toastr/toastr.min.js'),
-			__DIR__ . '/../../assets/style.css' => public_path('vendor/Notify/style.css'),
-			__DIR__ . '/../../assets/themify-icons.css' => public_path('vendor/Notify/themify-icons.css'),
+			__DIR__ . '/config/config.php' => config_path('notify.php'),
+			__DIR__ . '/assets/fonts/themify.woff@-fvbane' => public_path('vendor/Notify/fonts/themify.woff@-fvbane'),
+			__DIR__ . '/assets/jquery/jquery-3.2.1.min.js' => public_path('vendor/Notify/jquery/jquery-3.2.1.min.js'),
+			__DIR__ . '/assets/toastr/toastr.min.css' => public_path('vendor/Notify/toastr/toastr.min.css'),
+			__DIR__ . '/assets/toastr/toastr.min.js' => public_path('vendor/Notify/toastr/toastr.min.js'),
+			__DIR__ . '/assets/style.css' => public_path('vendor/Notify/style.css'),
+			__DIR__ . '/assets/themify-icons.css' => public_path('vendor/Notify/themify-icons.css'),
 		], 'notify');
 	}
 
