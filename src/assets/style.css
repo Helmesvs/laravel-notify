@@ -1,0 +1,122 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 27/09/2017, 21:06:44
+    Author     : Helmes V. Santos
+*/
+@font-face {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    src: local('Poppins Medium'), local('Poppins-Medium'), url(https://fonts.gstatic.com/s/poppins/v1/yQWaOD4iNU5NTY0apN-qjy3USBnSvpkopQaUR-2r7iU.ttf) format('truetype')
+}
+@font-face {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    src: local('Poppins SemiBold'), local('Poppins-SemiBold'), url(https://fonts.gstatic.com/s/poppins/v1/zO07Oxe3SOlw0l2YX2sdIS3USBnSvpkopQaUR-2r7iU.ttf) format('truetype')
+}
+
+.toast:before{
+    text-align: center
+}
+.toast-title {
+    font-weight: 600
+}
+.toast-title, .toast-message{
+    font-family: Poppins,sans-serif;
+    font-size: 14px;
+}
+#toast-container>div {
+    border-radius: 0;
+    box-shadow: none;
+    opacity: 1;
+    color: #737373;
+    background-color: #FFF;
+    padding: 15px 15px 15px 65px;
+    width: 300px;
+    min-height: 74px
+}
+#toast-container>.toast {
+    background-image: none!important
+}
+#toast-container>:hover {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05)
+}
+.toast-close-button {
+    height: 20px;
+    width: 20px;
+    color: #737373;
+    top: -5px;
+    right: -5px;
+    outline: 0
+}
+.toast:before {
+    font-family: themify;
+    font-size: 30px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    border-radius: 50%;
+    color: #FFF;
+    width: 40px;
+    height: 40px;
+    line-height: 40px
+}
+.toast-success {
+    border: 2px solid #17A88B
+}
+.toast-success .toast-title {
+    color: #149278
+}
+.toast-success .toast-progress {
+    background-color: #1abe9e
+}
+.toast-success:before {
+    content: "\e64d";
+    color: #149278
+}
+.toast-info {
+    border: 2px solid #0FB3FF
+}
+.toast-info .toast-title {
+    color: #00a7f5
+}
+.toast-info .toast-progress {
+    background-color: #29bbff
+}
+.toast-info:before {
+    content: "\e717";
+    color: #00a7f5
+}
+.toast-error:before,
+.toast-warning:before {
+    content: "\e6c5"
+}
+.toast-warning {
+    border: 2px solid #FFB61E
+}
+.toast-warning .toast-title {
+    color: #ffae04
+}
+.toast-warning .toast-progress {
+    background-color: #ffbe38
+}
+.toast-warning:before {
+    color: #ffae04
+}
+.toast-error {
+    border: 2px solid #E5343D
+}
+.toast-error .toast-title {
+    color: #e21d27
+}
+.toast-error .toast-progress {
+    background-color: #e84b53
+}
+.toast-error:before {
+    color: #e21d27
+}
