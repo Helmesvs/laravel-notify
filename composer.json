@@ -2,7 +2,7 @@
     "name": "helmesvs/laravel-notify",
     "description": "Elegant notifications to laravel with Toastr or PNotify",
     "keywords": ["PNotify", "notify", "toastr", "notification", "laravel", "php"],
-    "homepage": "https://github.com/Helmesvs/laravel-notification",
+    "homepage": "https://github.com/Helmesvs/laravel-notify",
     "license": "MIT",
     "authors": [
         {
@@ -16,7 +16,7 @@
         "illuminate/session": ">=5.0.0"
     },
     "autoload": {
-        "psr-0": {
+        "psr-4": {
             "Helmesvs\\Notify\\": "src/"
         }
     },
