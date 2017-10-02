@@ -38,13 +38,13 @@ Open `config/notify.php` to adjust package configuration. If this file doesn't e
 ]
 ```
 
-*lib* Set `'lib'` as `toastr` to use [toastr.js](https://github.com/CodeSeven/toastr) or `pnotify` to use [pnotify.js](https://github.com/sciactive/pnotify).
+Set `'lib'` as `toastr` to use [toastr.js](https://github.com/CodeSeven/toastr) or `pnotify` to use [pnotify.js](https://github.com/sciactive/pnotify).
 
-*style* Set `'style'` to `'custom'` to use custom settings, or as `'default'` to default library settings.
+Set `'style'` to `'custom'` to use custom settings, or as `'default'` to default library settings.
 
 The style of notifications can be customized in `public/vendor/Notify/style.css`.
 
-### Options toastr
+### Options Toastr
 ``` php
 'ToastrOptions' => [
         "closeButton" => false,
@@ -55,7 +55,7 @@ The style of notifications can be customized in `public/vendor/Notify/style.css`
 ]
 ```
 
-### Options pnotify
+### Options PNotify
 ``` php
 'PNotifyOptions' => [
         'title_escape' => false,
