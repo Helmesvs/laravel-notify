@@ -1,12 +1,10 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
 /* 
     Created on : 27/09/2017, 21:06:44
     Author     : Helmes V. Santos
+    E-mail     : helmesvs@hotmail.com
+    GitHub     : https://github.com/Helmesvs
 */
+
 @font-face {
     font-family: Poppins;
     font-style: normal;
@@ -66,10 +64,10 @@ and open the template in the editor.
     height: 40px;
     line-height: 40px
 }
-.toast-success {
+.toast-success, .brighttheme-success {
     border: 2px solid #17A88B
 }
-.toast-success .toast-title {
+.toast-success .toast-title, .brighttheme-success .ui-pnotify-title {
     color: #149278
 }
 .toast-success .toast-progress {
@@ -79,10 +77,10 @@ and open the template in the editor.
     content: "\e64d";
     color: #149278
 }
-.toast-info {
+.toast-info, .brighttheme-info {
     border: 2px solid #0FB3FF
 }
-.toast-info .toast-title {
+.toast-info .toast-title, .brighttheme-info .ui-pnotify-title{
     color: #00a7f5
 }
 .toast-info .toast-progress {
@@ -96,10 +94,10 @@ and open the template in the editor.
 .toast-warning:before {
     content: "\e6c5"
 }
-.toast-warning {
+.toast-warning, .brighttheme-notice {
     border: 2px solid #FFB61E
 }
-.toast-warning .toast-title {
+.toast-warning .toast-title, .brighttheme-notice .ui-pnotify-title {
     color: #ffae04
 }
 .toast-warning .toast-progress {
@@ -108,10 +106,10 @@ and open the template in the editor.
 .toast-warning:before {
     color: #ffae04
 }
-.toast-error {
+.toast-error, .brighttheme-error {
     border: 2px solid #E5343D
 }
-.toast-error .toast-title {
+.toast-error .toast-title, .brighttheme-error .ui-pnotify-title {
     color: #e21d27
 }
 .toast-error .toast-progress {
@@ -119,4 +117,51 @@ and open the template in the editor.
 }
 .toast-error:before {
     color: #e21d27
+}
+
+
+.brighttheme{
+    background-color: #fff;
+    color: #737373;
+}
+.ui-pnotify-title {
+    font-weight: 600
+}
+.ui-pnotify-title, .ui-pnotify-text{
+    font-family: Poppins,sans-serif;
+    font-size: 14px;
+    padding-left: 61px;
+    margin-bottom: 0 !important;
+}
+
+.brighttheme.ui-pnotify-container{
+    padding: 15px;
+}
+.ui-pnotify-icon span:after{
+    font-family: themify;
+    font-size: 38px;
+    left: 6px;
+    top: 12px;
+    text-align: center;
+    font-weight: 100;
+}
+.ui-pnotify-icon span{
+    background-color: #fff;
+    border: 0;
+}
+.brighttheme-icon-success:after{
+    content: "\e64d";
+    color: #149278;
+}
+.brighttheme-icon-info:after{
+    content: "\e717";
+    color: #00a7f5;
+}
+.brighttheme-icon-notice:after{
+    content: "\e6c5";
+    color: #ffae04;
+}
+.brighttheme-icon-error:after{
+    content: "\e6c5";
+    color: #e21d27;
 }

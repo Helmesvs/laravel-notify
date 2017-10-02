@@ -1,5 +1,11 @@
 <?php
 
+/*
+  Author     : Helmes V. Santos
+  E-mail     : helmesvs@hotmail.com
+  GitHub     : https://github.com/Helmesvs
+ */
+
 namespace Helmesvs\Notify;
 
 use Illuminate\Config\Repository;
@@ -14,6 +20,13 @@ class Notify {
     protected $notifications = [];
 
     /**
+     * Added notifications
+     *
+     * @var array
+     */
+    protected $options = [];
+
+    /**
      * Illuminate Session
      *
      * @var \Illuminate\Session\SessionManager
@@ -21,7 +34,7 @@ class Notify {
     protected $session;
 
     /**
-     * Toastr config
+     * Library config
      *
      * @var Illuminate\Config\Repository
      */
@@ -48,15 +61,19 @@ class Notify {
      *
      */
     public function render() {
-        $notifications = $this->session->get('toastr::notifications');
+        $notifications = $this->session->get('laravel::notifications');
         if (!$notifications)
             $notifications = [];
 
-        $output = '<script type="text/javascript">';
+        $this->options = $this->config->get('notify.options');
+
+        $output = $this->scripts();
+
+        $output .= '<script type="text/javascript">';
         $lastConfig = [];
         foreach ($notifications as $notification) {
 
-            $config = $this->config->get('toastr.options');
+            $config = ($this->options['lib'] === 'toastr' ? $this->config->get('notify.ToastrOptions') : $this->config->get('notify.PNotifyOptions'));
 
             if (count($notification['options']) > 0) {
                 // Merge user supplied options with default options
@@ -65,16 +82,59 @@ class Notify {
 
             // Config persists between toasts
             if ($config != $lastConfig) {
-                $output .= 'toastr.options = ' . json_encode($config) . ';';
+                $output .= ($this->options['lib'] === 'toastr' ? 'toastr.options = ' . $this->json_encode_advanced($config, false, true, true) . ';' : '');
                 $lastConfig = $config;
             }
 
-            // Toastr output
-            $output .= 'toastr.' . $notification['type'] . "('" . $notification['message'] . "'" . (isset($notification['title']) ? ", '" . str_replace("'", "\\'", htmlentities($notification['title'])) . "'" : null) . ');';
+            if ($this->options['lib'] === 'toastr'):
+                //Toastr output
+                $output .= 'toastr.' . $notification['type'] . "('" . $notification['message'] . "'" . (isset($notification['title']) ? ", '" . str_replace("'", "\\'", htmlentities($notification['title'])) . "'" : null) . ');';
+            else:
+                //PNotify output
+                $output .= "
+                $(function () {
+                    new PNotify({
+                        title: '" . (isset($notification['title']) ? str_replace("'", "\\'", htmlentities($notification['title'])) : null) . "',
+                        text: '" . $notification['message'] . "',
+                        type: '" . $notification['type'] . "',
+                        " . substr($this->json_encode_advanced($config, false, true, true), 1, -1) . "
+                    });
+            });";
+            endif;
         }
         $output .= '</script>';
 
         return $output;
+    }
+
+    /**
+     * Script string mount
+     *
+     * @return string Return required scrips 
+     */
+    public function scripts() {
+
+        $scripts = '<link href="vendor/Notify/themify-icons.css" rel="stylesheet" type="text/css">
+                   
+                   <script type="text/javascript" src="vendor/Notify/jquery/jquery-3.2.1.min.js"></script>';
+
+        if ($this->options['lib'] === 'toastr'):
+            $scripts .= '<link href="vendor/Notify/toastr/toastr.min.css" rel="stylesheet" type="text/css">
+                         <script type="text/javascript" src="vendor/Notify/toastr/toastr.min.js"></script>';
+        elseif ($this->options['lib'] === 'pnotify'):
+            $scripts .= '<link href="vendor/Notify/animate.css" rel="stylesheet" type="text/css">
+                         <link href="vendor/Notify/pnotify/pnotify.custom.min.css" rel="stylesheet" type="text/css">
+                         <script type="text/javascript" src="vendor/Notify/pnotify/pnotify.custom.min.js"></script>';
+            if ($this->config['desktop']['desktop'] === true):
+                $scripts .= 'PNotify.desktop.permission();';
+            endif;
+        endif;
+
+        if ($this->options['style'] === 'custom'):
+            $scripts .= '<link href="vendor/Notify/style.css" rel="stylesheet" type="text/css">';
+        endif;
+
+        return $scripts;
     }
 
     /**
@@ -99,7 +159,7 @@ class Notify {
             'options' => $options
         ];
 
-        $this->session->flash('toastr::notifications', $this->notifications);
+        $this->session->flash('laravel::notifications', $this->notifications);
     }
 
     /**
@@ -147,6 +207,52 @@ class Notify {
      */
     public function clear() {
         $this->notifications = [];
+    }
+
+    /**
+     * Convert array in json
+     * @return Json Options for Pnotify 
+     * not.
+     */
+    public function json_encode_advanced(array $arr, $sequential_keys = false, $quotes = false, $beautiful_json = false) {
+
+        $output = $this->isAssoc($arr) ? "{" : "[";
+        $count = 0;
+
+        foreach ($arr as $key => $value) {
+
+            if ($this->isAssoc($arr) || (!$this->isAssoc($arr) && $sequential_keys == true )) {
+                $output .= ($quotes ? '"' : '') . $key . ($quotes ? '"' : '') . ' : ';
+            }
+
+            if (is_array($value)) {
+                $output .= $this->json_encode_advanced($value, $sequential_keys, $quotes, $beautiful_json);
+            } else if (is_bool($value)) {
+                $output .= ($value ? 'true' : 'false');
+            } else if (is_numeric($value)) {
+                $output .= $value;
+            } else {
+                $output .= ($quotes || $beautiful_json ? '"' : '') . $value . ($quotes || $beautiful_json ? '"' : '');
+            }
+
+            if (++$count < count($arr)) {
+                $output .= ', ';
+            }
+        }
+
+        $output .= $this->isAssoc($arr) ? "}" : "]";
+
+        return $output;
+    }
+
+    /*
+     * Check if array is associative
+     */
+
+    public function isAssoc(array $arr) {
+        if (array() === $arr)
+            return false;
+        return array_keys($arr) !== range(0, count($arr) - 1);
     }
 
 }
