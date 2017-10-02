@@ -19,7 +19,7 @@ class NotifyServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		$this->publishes([
-			__DIR__ . '/config/config.php' => config_path('notify.php'),
+			__DIR__ . '/config/notify.php' => config_path('notify.php'),
 			__DIR__ . '/assets/fonts/themify.woff@-fvbane' => public_path('vendor/Notify/fonts/themify.woff@-fvbane'),
 			__DIR__ . '/assets/jquery/jquery-3.2.1.min.js' => public_path('vendor/Notify/jquery/jquery-3.2.1.min.js'),
 			__DIR__ . '/assets/pnotify/pnotify.custom.min.css' => public_path('vendor/Notify/toastr/toastr.min.css'),
