@@ -1,7 +1,7 @@
 Laravel Notify
 ======
 
-Elegant notifications to laravel with [toastr.js](https://github.com/CodeSeven/toastr) or [PNotifyEasy](https://github.com/sciactive/pnotify)
+Elegant notifications to laravel with [Toastr](https://github.com/CodeSeven/toastr) or [PNotify](https://github.com/sciactive/pnotify)
 
 Installation
 ------------
@@ -11,7 +11,7 @@ Installation
 3. Add `'Notify' => 'Helmesvs\Notify\Facades\Notify::class',` to the `aliases` key in `config/app.php`.
 4. Run `php artisan vendor:publish --provider="Helmesvs\Notify\NotifyServiceProvider" --tag="notify"` to publish the config file.
 5. Include the output `Notify::render()` in your master view template.
-6. Modify the configuration file located in config/notify.php.
+6. *Optional*: Modify the configuration file located in config/notify.php.
 
 Usage
 -----
