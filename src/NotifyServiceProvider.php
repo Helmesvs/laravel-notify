@@ -55,3 +55,4 @@ class NotifyServiceProvider extends ServiceProvider {
 	}
 
 }
+

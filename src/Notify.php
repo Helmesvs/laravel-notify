@@ -1,11 +1,5 @@
 <?php
 
-/*
-  Author     : Helmes V. Santos
-  E-mail     : helmesvs@hotmail.com
-  GitHub     : https://github.com/Helmesvs
- */
-
 namespace Helmesvs\Notify;
 
 use Illuminate\Config\Repository;
