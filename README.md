@@ -7,7 +7,7 @@ Installation
 ------------
 
 1. Either run `composer require helmesvs/laravel-notify` or add `"helmesvs/laravel-notify"` to the `require` key in `composer.json` and run `composer install`.
-2. Add `'Helmesvs\Notify\NotifyServiceProvider::class',` to the `providers` key in `config/app.php`.
+2. Add `Helmesvs\Notify\NotifyServiceProvider::class,` to the `providers` key in `config/app.php`.
 3. Add `'Notify' => 'Helmesvs\Notify\Facades\Notify::class',` to the `aliases` key in `config/app.php`.
 4. Run `php artisan vendor:publish --provider="Helmesvs\Notify\NotifyServiceProvider" --tag="notify"` to publish the config file.
 5. Include the output `Notify::render()` in your master view template.
