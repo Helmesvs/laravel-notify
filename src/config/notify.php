@@ -3,7 +3,7 @@
 return [
     //General Options 
     'options' => [
-        'lib' => 'pnotify', //toastr or pnotify
+        'lib' => 'toastr', //toastr or pnotify
         'style' => 'custom' //default or custom (custum is recommended)
     ],
     //Toastr
