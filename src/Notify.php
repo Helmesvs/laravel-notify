@@ -108,24 +108,32 @@ class Notify {
      */
     public function scripts() {
 
-        $scripts = '<link href="vendor/Notify/themify-icons.css" rel="stylesheet" type="text/css">
-                   
-                   <script type="text/javascript" src="vendor/Notify/jquery/jquery-3.2.1.min.js"></script>';
+        $scripts = '<link href="'. asset('vendor/Notify/themify-icons.css') .'" rel="stylesheet" type="text/css">';
+
+        if ($this->options['include:Jquery']):
+            $scripts .= '<script type="text/javascript" src="'. asset('vendor/Notify/jquery/jquery-3.2.1.min.js') .'"></script>;';
+        endif;
 
         if ($this->options['lib'] === 'toastr'):
-            $scripts .= '<link href="vendor/Notify/toastr/toastr.min.css" rel="stylesheet" type="text/css">
-                         <script type="text/javascript" src="vendor/Notify/toastr/toastr.min.js"></script>';
+            $scripts .= '<link href="'. asset('vendor/Notify/toastr/toastr.min.css') .'" rel="stylesheet" type="text/css">
+                         <script type="text/javascript" src="'. asset('vendor/Notify/toastr/toastr.min.js') .'"></script>';
+
         elseif ($this->options['lib'] === 'pnotify'):
-            $scripts .= '<link href="vendor/Notify/animate.css" rel="stylesheet" type="text/css">
-                         <link href="vendor/Notify/pnotify/pnotify.custom.min.css" rel="stylesheet" type="text/css">
-                         <script type="text/javascript" src="vendor/Notify/pnotify/pnotify.custom.min.js"></script>';
+
+            if ($this->options['include:Animate']):
+                $scripts .= '<link href="'. asset('vendor/Notify/animate.css') .'" rel="stylesheet" type="text/css">';
+            endif;
+
+            $scripts .= '<link href="'. asset('vendor/Notify/pnotify/pnotify.custom.min.css') .'" rel="stylesheet" type="text/css">
+                         <script type="text/javascript" src="'. asset('vendor/Notify/pnotify/pnotify.custom.min.js') .'"></script>';
             if ($this->config['desktop']['desktop'] === true):
                 $scripts .= 'PNotify.desktop.permission();';
             endif;
+
         endif;
 
         if ($this->options['style'] === 'custom'):
-            $scripts .= '<link href="vendor/Notify/style.css" rel="stylesheet" type="text/css">';
+            $scripts .= '<link href="'. asset('vendor/Notify/style.css') .'" rel="stylesheet" type="text/css">';
         endif;
 
         return $scripts;
