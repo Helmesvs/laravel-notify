@@ -4,7 +4,11 @@ return [
     //General Options 
     'options' => [
         'lib' => 'toastr', //toastr or pnotify
-        'style' => 'custom' //default or custom (custum is recommended)
+        'style' => 'custom', //default or custom (custum is recommended)
+        //Files include//
+        //Include case no exists in your page
+        'include:Jquery' => true, //Include file jquery-***.min.js
+        'include:Animate' => true  //Include file animate.cs
     ],
     //Toastr
     //Documentation: https://github.com/CodeSeven/toastr#other-options
