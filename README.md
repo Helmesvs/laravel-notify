@@ -3,6 +3,8 @@ Laravel Notify
 
 Elegant notifications to laravel with [Toastr](https://github.com/CodeSeven/toastr) or [PNotify](https://github.com/sciactive/pnotify)
 
+![alt text](https://i.imgur.com/Tt1L6Bt.png)
+
 Installation
 ------------
 
