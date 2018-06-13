@@ -111,7 +111,7 @@ class Notify {
         $scripts = '<link href="'. asset('vendor/Notify/themify-icons.css') .'" rel="stylesheet" type="text/css">';
 
         if ($this->options['include:Jquery']):
-            $scripts .= '<script type="text/javascript" src="'. asset('vendor/Notify/jquery/jquery-3.2.1.min.js') .'"></script>;';
+            $scripts .= '<script type="text/javascript" src="'. asset('vendor/Notify/jquery/jquery-3.2.1.min.js') .'"></script>';
         endif;
 
         if ($this->options['lib'] === 'toastr'):
