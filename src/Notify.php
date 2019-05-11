@@ -55,7 +55,7 @@ class Notify {
      *
      */
     public function render() {
-        $notifications = $this->session->get('laravel::notifications');
+        $notifications = $this->session->pull('laravel::notifications');
         if (!$notifications)
             $notifications = [];
 
