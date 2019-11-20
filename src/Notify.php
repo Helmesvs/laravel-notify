@@ -209,6 +209,7 @@ class Notify {
      */
     public function clear() {
         $this->notifications = [];
+        $this->session->forget('laravel::notifications');
     }
 
     /**
