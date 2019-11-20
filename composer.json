@@ -20,5 +20,15 @@
             "Helmesvs\\Notify\\": "src/"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Helmesvs\\Notify\\NotifyServiceProvider"
+            ],
+            "aliases": {
+                "Notify": "Helmesvs\\Notify\\Facades\\Notify::class"
+            }
+        }
+    }
 }
